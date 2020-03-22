@@ -37,6 +37,7 @@
                 message: message.value,
                 username: username.value
             })
+            message.value = '';
         });
 
         socket.on('chat', function(data) {

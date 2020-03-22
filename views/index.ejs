@@ -33,16 +33,22 @@
             }
         })
         btn.addEventListener('click', function() {
-            socket.emit('chat', {
+            if (message.value == '') {
+                alert("You need to enter something! Don't spam!");
+            }
+            else {
+                socket.emit('chat', {
                 message: message.value,
                 username: username.value
-            })
-            message.value = '';
+                })
+                message.value = '';
+            }
+            
         });
 
         socket.on('chat', function(data) {
             var para = document.createElement("P");
-            para.innerText = data.username + ": " + data.message;
+            para.innerText =  data.username + ": " + data.message;
             output.appendChild(para);
             para.scrollIntoView();
             // output.innerHTML += "<p>" + data.username + ": " + data.message + "</p>";

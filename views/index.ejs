@@ -26,6 +26,12 @@
         var btn = document.getElementById('send');
         var output = document.getElementById('output');
 
+        message.addEventListener('keyup', function(event) {
+            event.preventDefault();
+            if (event.keyCode == 13) {
+                btn.click()
+            }
+        })
         btn.addEventListener('click', function() {
             socket.emit('chat', {
                 message: message.value,

@@ -41,7 +41,11 @@
         });
 
         socket.on('chat', function(data) {
-            output.innerHTML += "<p>" + data.username + ": " + data.message + "</p>";
+            var para = document.createElement("P");
+            para.innerText = data.username + ": " + data.message;
+            output.appendChild(para);
+            para.scrollIntoView();
+            // output.innerHTML += "<p>" + data.username + ": " + data.message + "</p>";
         })
     </script>
 </body>
